@@ -1,0 +1,27 @@
+def largestNumber(nums):
+    # Convert numbers to strings
+    nums = [str(num) for num in nums]
+
+    # Custom comparison function
+    def compare(a, b):
+        if a + b > b + a:
+            return -1
+        else:
+            return 1
+
+    # Sort the numbers using the custom comparison function
+    nums.sort(key=lambda x: compare(x, ""), reverse=True)
+
+    # Concatenate the sorted numbers
+    largest_num = ''.join(nums)
+
+    # Handle the case when the result starts with '0'
+    if largest_num.startswith('0'):
+        return '0'
+
+    return largest_num
+
+# Example usage
+numbers = [3, 30, 34, 5, 9]
+result = largestNumber(numbers)
+print("Largest number:", result)
